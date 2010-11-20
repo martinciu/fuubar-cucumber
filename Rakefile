@@ -19,7 +19,6 @@ Jeweler::Tasks.new do |gem|
   gem.description = %Q{the instafailing Cucumber progress bar formatter}
   gem.email = "marcin.ciunelis@gmail.com"
   gem.authors = ["Marcin Ciunelis"]
-  gem.add_bundler_dependencies
 end
 Jeweler::RubygemsDotOrgTasks.new
 
