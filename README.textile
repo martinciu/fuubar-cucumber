@@ -2,6 +2,8 @@ h1. Fuubar-cucumber
 
 Fuubar-cucumber is an instafailing "Cucumber":https://github.com/aslakhellesoy/cucumber formatter that uses a progress bar instead of a string of letters and dots as feedback. It is based on RSpec formatter "Fuubar":https://github.com/jeffkreeftmeijer/fuubar. 
 
+Fuubar displays progress bar with percentage of steps completed and ETA instead of green dots. When one of the steps fails, it is instantly displayed so you can go and fix it witchout waiting for all scenarios.
+
 h2. Installation
 
 Installing Fuubar-cucumber is easy. Just put it in your @Gemfile@ 
@@ -10,7 +12,11 @@ bc. gem 'fuubar-cucumber'
 
 run @bundle install@
 
-and run your features like this from now on:
+If you don't user Bundler you can install it using @gem@ command:
+
+bc. $ gem install fuubar-cucumber
+
+You can now run your features like this:
 
 bc. $ cucumber -f Cucumber::Formatter::Fuubar
 
