@@ -1,14 +1,26 @@
-require 'cucumber/formatter/progress'
+require 'cucumber/formatter/console'
+require 'cucumber/formatter/io'
 
 module Cucumber
   module Formatter
-    class Fuubar < Progress
+    class Fuubar
+      include Console
+      include Io
+
+      attr_reader :step_mother
 
       def initialize(step_mother, path_or_io, options)
+        @step_mother, @io, @options = step_mother, ensure_io(path_or_io, "fuubar"), options
         @step_count = @finished_count = @issues_count = 0
-        @in_background = false
-        @is_example = false
-        super
+      end
+
+      def after_features(features)
+        @io.print COLORS[state]
+        @progress_bar.finish
+        @io.print "\e[0m"
+        @io.puts
+        @io.puts
+        print_summary(features)
       end
 
       def before_features(features)
@@ -25,13 +37,6 @@ module Cucumber
         @in_background = false
       end
 
-      def after_features(features)
-        @io.print COLORS[state]
-        @progress_bar.finish
-        @io.print "\e[0m"
-        super
-      end
-
       def after_step_result(keyword, step_match, multiline_arg, status, exception, source_indent, background)
         return if @in_background || status == :skipped
         @state = :red if status == :failed
@@ -44,38 +49,30 @@ module Cucumber
           @io.puts
           @io.flush
         end
-        super
+        progress(status)
       end
-      
+
       def before_examples(examples)
         @is_example = true
       end
-      
+
       def after_exaples(examples)
         @is_example = false
       end
-      
+
       def before_table_row(table_row)
         if @is_example && table_row.scenario_outline
-          progress('passed', table_row.scenario_outline.instance_variable_get("@background").instance_variable_get("@steps").count)
+          progress(:passed, table_row.scenario_outline.instance_variable_get("@background").instance_variable_get("@steps").count)
         end
       end
-      
+
       def after_table_row(table_row)
         if @is_example && table_row.scenario_outline
-          progress('passed', table_row.scenario_outline.instance_variable_get("@steps").count)
+          progress(:passed, table_row.scenario_outline.instance_variable_get("@steps").count)
         end
-      end
-      
-      def table_cell_value(value, status)
-        # return unless @outline_table
-        # p "c #{value} - #{status}"
-        # status ||= @status
-        # progress(status) unless table_header_cell?(status)
       end
 
       protected
-
         def state
           @state ||= :green
         end
@@ -85,14 +82,6 @@ module Cucumber
           print_snippets(@options)
           print_passing_wip(@options)
         end
-
-        CHARS = {
-          :passed    => '.',
-          :failed    => 'F',
-          :undefined => 'U',
-          :pending   => 'P',
-          :skipped   => '-'
-        }
 
         COLORS = { :green =>  "\e[32m", :yellow => "\e[33m", :red => "\e[31m" }
 
