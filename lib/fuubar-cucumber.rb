@@ -61,13 +61,13 @@ module Cucumber
       end
 
       def before_table_row(table_row)
-        if @is_example && table_row.scenario_outline
+        if @is_example && table_row.is_a?(Cucumber::Ast::OutlineTable::ExampleRow) && table_row.scenario_outline
           progress(:passed, table_row.scenario_outline.instance_variable_get("@background").instance_variable_get("@steps").count)
         end
       end
 
       def after_table_row(table_row)
-        if @is_example && table_row.scenario_outline
+        if @is_example && table_row.is_a?(Cucumber::Ast::OutlineTable::ExampleRow) && table_row.scenario_outline
           progress(:passed, table_row.scenario_outline.instance_variable_get("@steps").count)
         end
       end
