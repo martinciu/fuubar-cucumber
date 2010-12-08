@@ -1,5 +1,6 @@
 require 'cucumber/formatter/console'
 require 'cucumber/formatter/io'
+require 'progressbar'
 
 module Cucumber
   module Formatter
