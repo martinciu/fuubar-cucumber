@@ -41,7 +41,7 @@ module Cucumber
       def after_step_result(keyword, step_match, multiline_arg, status, exception, source_indent, background)
         return if @in_background || status == :skipped
         @state = :red if status == :failed
-        if [:failed, :undefined].include? status
+        if exception and [:failed, :undefined].include? status
           @io.print "\e[K"
           @issues_count += 1
           @io.puts
