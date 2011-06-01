@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{fuubar-cucumber}
-  s.version = "0.0.9"
+  s.version = "0.0.10"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Marcin Ciunelis"]
-  s.date = %q{2010-12-15}
+  s.date = %q{2011-06-01}
   s.description = %q{the instafailing Cucumber progress bar formatter}
   s.email = %q{marcin.ciunelis@gmail.com}
   s.extra_rdoc_files = [
@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/martinciu/fuubar-cucumber}
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.7}
+  s.rubygems_version = %q{1.7.2}
   s.summary = %q{the instafailing Cucumber progress bar formatter}
   s.test_files = [
     "spec/fuubar-cucumber_spec.rb",
@@ -41,7 +41,6 @@ Gem::Specification.new do |s|
   ]
 
   if s.respond_to? :specification_version then
-    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
