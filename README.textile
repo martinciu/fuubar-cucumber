@@ -36,5 +36,5 @@ h2. Contributing
 
 h2. Copyright
 
-Copyright (c) 2010 Marcin Ciunelis. See LICENSE.txt for further details.
+Copyright (c) 2010-2011 Marcin Ciunelis. See LICENSE.txt for further details.
 
