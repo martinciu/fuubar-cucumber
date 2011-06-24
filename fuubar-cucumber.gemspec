@@ -17,5 +17,4 @@ Gem::Specification.new do |s|
   s.add_dependency 'cucumber'
   s.add_dependency 'ruby-progressbar', ["~> 0.0.10"]
   
-  s.add_development_dependency('rspec')
 end
