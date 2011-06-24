@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name          = "fuubar-cucumber"
-  s.version       = '0.0.10'
+  s.version       = '0.0.11'
   s.platform      = Gem::Platform::RUBY
   s.authors       = ["Marcin Ciunelis"]
   s.email         = ["marcin.ciunelis@gmail.com"]
