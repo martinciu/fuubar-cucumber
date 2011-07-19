@@ -57,7 +57,7 @@ module Cucumber
         @is_example = true
       end
 
-      def after_exaples(examples)
+      def after_examples(examples)
         @is_example = false
       end
 
