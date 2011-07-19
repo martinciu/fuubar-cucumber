@@ -42,15 +42,19 @@ module Cucumber
         return if @in_background || status == :skipped
         @state = :red if status == :failed
         if exception and [:failed, :undefined].include? status
-          @io.print "\e[K"
-          @issues_count += 1
-          @io.puts
-          @io.puts "#{@issues_count})"
-          print_exception(exception, status, 2)
-          @io.puts
-          @io.flush
+          self.exception(exception, status)
         end
         progress(status)
+      end
+      
+      def exception(exception, status)
+        @io.print "\e[K"
+        @issues_count += 1
+        @io.puts
+        @io.puts "#{@issues_count})"
+        print_exception(exception, status, 2)
+        @io.puts
+        @io.flush
       end
 
       def before_examples(examples)
