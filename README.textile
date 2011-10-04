@@ -16,6 +16,10 @@ If you don't user Bundler you can install it using @gem@ command:
 
 bc. $ gem install fuubar-cucumber
 
+Add this line to your features/support/env.rb
+
+bc. require 'cucumber/formatter/fuubar'
+
 You can now run your features like this:
 
 bc. $ cucumber -f Cucumber::Formatter::Fuubar
