@@ -1,0 +1,1 @@
+require 'cucumber/formatter/fuubar'
