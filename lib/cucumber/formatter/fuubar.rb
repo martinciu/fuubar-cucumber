@@ -38,7 +38,7 @@ module Cucumber
         @in_background = false
       end
 
-      def after_step_result(keyword, step_match, multiline_arg, status, exception, source_indent, background)
+      def after_step_result(keyword, step_match, multiline_arg, status, exception, source_indent, background, file_colon_line)
         return if @in_background || status == :skipped
         @state = :red if status == :failed
         if exception and [:failed, :undefined].include? status
