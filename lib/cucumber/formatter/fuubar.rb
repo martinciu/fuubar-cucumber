@@ -16,6 +16,7 @@ module Cucumber
       end
 
       def after_features(features)
+        @state = :red if step_mother.scenarios(:failed).any?
         @io.print COLORS[state]
         @progress_bar.finish
         @io.print "\e[0m"
