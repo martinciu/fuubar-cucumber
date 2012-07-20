@@ -2,8 +2,8 @@ Gem::Specification.new do |s|
   s.name          = "fuubar-cucumber"
   s.version       = '0.0.16'
   s.platform      = Gem::Platform::RUBY
-  s.authors       = ["Marcin Ciunelis"]
-  s.email         = ["marcin.ciunelis@gmail.com"]
+  s.authors       = ["Marcin Ciunelis", "Vasiliy Ermolovich"]
+  s.email         = ["marcin.ciunelis@gmail.com", "younash@gmail.com"]
   s.homepage      = "https://github.com/martinciu/fuubar-cucumber"
   s.summary       = %q{the instafailing Cucumber progress bar formatter}
   s.description   = %q{the instafailing Cucumber progress bar formatter}
