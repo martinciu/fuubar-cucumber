@@ -1,6 +1,6 @@
 require 'cucumber/formatter/console'
 require 'cucumber/formatter/io'
-require 'progressbar'
+require 'ruby-progressbar'
 
 module Cucumber
   module Formatter
@@ -27,7 +27,7 @@ module Cucumber
 
       def before_features(features)
         @step_count = get_step_count(features)
-        @progress_bar = ProgressBar.new("  #{@step_count} steps", @step_count, @io)
+        @progress_bar = ProgressBar.create(:title => " #{@step_count} steps", :total => @step_count, :output => @io)
         @progress_bar.bar_mark = '='
       end
 
@@ -90,8 +90,8 @@ module Cucumber
         def progress(status = 'passed', count = 1)
           @io.print COLORS[state]
           @finished_count += count
-          @progress_bar.inc(count)
-          @progress_bar.instance_variable_set("@title", "  #{@finished_count}/#{@step_count}")
+          @progress_bar.progress += count
+          @progress_bar.title = "  #{@finished_count}/#{@step_count}"
           @io.print "\e[0m"
         end
 
