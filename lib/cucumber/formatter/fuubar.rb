@@ -28,7 +28,6 @@ module Cucumber
       def before_features(features)
         @step_count = get_step_count(features)
         @progress_bar = ProgressBar.create(:title => " #{@step_count} steps", :total => @step_count, :output => @io)
-        @progress_bar.bar_mark = '='
       end
 
       def before_background(background)
