@@ -12,7 +12,7 @@ module Cucumber
 
       def initialize(step_mother, path_or_io, options)
         @step_mother, @io, @options = step_mother, ensure_io(path_or_io, "fuubar"), options
-        @step_count = @finished_count = @issues_count = 0
+        @step_count = @issues_count = 0
       end
 
       def after_features(features)
@@ -88,9 +88,7 @@ module Cucumber
 
         def progress(status = 'passed', count = 1)
           @io.print COLORS[state]
-          @finished_count += count
           @progress_bar.progress += count
-          @progress_bar.title = "  #{@finished_count}/#{@step_count}"
           @io.print "\e[0m"
         end
 
