@@ -1,3 +1,8 @@
+## Unreleased
+
+### enhancements
+  * Add ability to disable color with cucumber's `--color` option. #22 (by [@hron](https://github.com/hron))
+
 ## 0.0.17 (July 31, 2012) ##
 
 ### bug fix
