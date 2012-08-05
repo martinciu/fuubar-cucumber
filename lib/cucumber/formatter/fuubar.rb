@@ -1,4 +1,5 @@
 require 'cucumber/formatter/console'
+require 'cucumber/formatter/ansicolor'
 require 'cucumber/formatter/io'
 require 'ruby-progressbar'
 
@@ -17,9 +18,9 @@ module Cucumber
 
       def after_features(features)
         @state = :red if step_mother.scenarios(:failed).any?
-        @io.print COLORS[state]
-        @progress_bar.finish
-        @io.print "\e[0m"
+        with_colors(COLORS[state]) do
+          @progress_bar.finish
+        end
         @io.puts
         @io.puts
         print_summary(features)
@@ -42,7 +43,7 @@ module Cucumber
         return if @in_background || status == :skipped
         @state = :red if status == :failed
         if exception and [:failed, :undefined].include? status
-          @io.print "\e[K"
+          @io.print "\e[K" if colors_enabled?
           @issues_count += 1
           @io.puts
           @io.puts "#{@issues_count})"
@@ -87,9 +88,9 @@ module Cucumber
         COLORS = { :green =>  "\e[32m", :yellow => "\e[33m", :red => "\e[31m" }
 
         def progress(status = 'passed', count = 1)
-          @io.print COLORS[state]
-          @progress_bar.progress += count
-          @io.print "\e[0m"
+          with_colors(COLORS[state]) do
+            @progress_bar.progress += count
+          end
         end
 
         def get_step_count(features)
@@ -121,6 +122,16 @@ module Cucumber
             end
           end
           return count
+        end
+
+        def with_colors(color, &block)
+          @io.print color if colors_enabled?
+          yield
+          @io.print "\e[0m" if colors_enabled?
+        end
+
+        def colors_enabled?
+          Cucumber::Term::ANSIColor.coloring?
         end
     end
   end
