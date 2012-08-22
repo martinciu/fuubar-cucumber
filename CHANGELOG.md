@@ -1,4 +1,8 @@
-## Unreleased
+## 0.0.18 (August 22, 2012) ##
+
+### bug fix
+  * Update ruby-progressbar to 1.0.0 (fixes ruby-progress bar bugs) (by [@nashby](https://github.com/nashby))
+  * Don't duplicate final progress bar output (7a2aeea) (by [@nashby](https://github.com/nashby))
 
 ### enhancements
   * Add ability to disable color with cucumber's `--color` option. #22 (by [@hron](https://github.com/hron))
