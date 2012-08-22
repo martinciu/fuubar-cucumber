@@ -15,5 +15,5 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency 'cucumber', ["~> 1.2.0"]
-  s.add_dependency 'ruby-progressbar', ["~> 1.0.0rc1"]
+  s.add_dependency 'ruby-progressbar', ["~> 1.0.0"]
 end
