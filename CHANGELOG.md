@@ -1,3 +1,8 @@
+## 0.0.19 (March 9, 2013) ##
+
+### bug fix
+  * Make compatible with Cucumber 1.2.3's rename of step_mother to runtime (by [@amarshall](https://github.com/amarshall))
+
 ## 0.0.18 (August 22, 2012) ##
 
 ### bug fix
