@@ -9,15 +9,16 @@ module Cucumber
       include Console
       include Io
 
-      attr_reader :step_mother
+      attr_reader :runtime
+      alias_method :step_mother, :runtime
 
-      def initialize(step_mother, path_or_io, options)
-        @step_mother, @io, @options = step_mother, ensure_io(path_or_io, "fuubar"), options
+      def initialize(runtime, path_or_io, options)
+        @runtime, @io, @options = runtime, ensure_io(path_or_io, "fuubar"), options
         @step_count = @issues_count = 0
       end
 
       def after_features(features)
-        @state = :red if step_mother.scenarios(:failed).any?
+        @state = :red if runtime.scenarios(:failed).any?
         @io.puts
         @io.puts
         print_summary(features)
