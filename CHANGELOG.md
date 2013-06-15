@@ -1,3 +1,8 @@
+## 0.0.20 ##
+
+### enhancements
+  * Update cucumber depedency to `~> 1.3.0` (by [@nashby](https://github.com/nashby))
+
 ## 0.0.19 (March 9, 2013) ##
 
 ### bug fix

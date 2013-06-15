@@ -25,7 +25,7 @@ module Cucumber
       end
 
       def before_features(features)
-        @step_count = get_step_count(features)
+        @step_count = features.step_count
         @progress_bar = ProgressBar.create(:format => ' %c/%C |%w>%i| %e ', :total => @step_count, :output => @io)
       end
 
@@ -89,37 +89,6 @@ module Cucumber
           with_colors(COLORS[state]) do
             @progress_bar.progress += count
           end
-        end
-
-        def get_step_count(features)
-          count = 0
-          features = features.instance_variable_get("@features")
-          features.each do |feature|
-            background_size = 0
-            if feature.instance_variable_get("@background")
-              background = feature.instance_variable_get("@background")
-              background.init
-              background_steps = background.instance_variable_get("@steps").instance_variable_get("@steps")
-            end
-            feature.instance_variable_get("@feature_elements").each do |scenario|
-              scenario.init
-              steps = scenario.instance_variable_get("@steps").instance_variable_get("@steps")
-              scenario_size = steps.size
-              if background_steps && scenario.is_a?(Cucumber::Ast::ScenarioOutline)
-                background_size = background_steps.size
-              end
-              examples = scenario.instance_variable_get("@examples_array")
-              if examples
-                examples.each do |example|
-                  example_matrix = example.instance_variable_get("@outline_table").instance_variable_get("@cell_matrix")
-                  count += (scenario_size + background_size)*(example_matrix.size - 1)
-                end
-              else
-                count += scenario_size
-              end
-            end
-          end
-          return count
         end
 
         def with_colors(color, &block)
