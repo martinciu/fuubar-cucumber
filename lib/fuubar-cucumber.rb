@@ -2,7 +2,7 @@ require 'cucumber/formatter/fuubar'
 
 # Extend Cucumber's builtin formats, so that this
 # formatter can be used with --format fuubar
-require 'cucumber/cli/options'
+require 'cucumber/cli/main'
 
 Cucumber::Cli::Options::BUILTIN_FORMATS["fuubar"] = [
   "Cucumber::Formatter::Fuubar",
