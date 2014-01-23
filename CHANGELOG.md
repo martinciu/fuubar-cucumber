@@ -1,3 +1,6 @@
+## HEAD ##
+  * Change ruby-progressbar dependency constraint to `~> 1.2` (by [@lime](https://github.com/lime))
+
 ## 0.0.21 ## (November 2, 2013)
   * Fix `uninitialized constant Cucumber::RbSupport::RbLanguage::LanguageSupport` error when `cucumber`
   gem is not in Gemfile (by [@nashby](https://github.com/nashby))
