@@ -40,15 +40,6 @@ module Cucumber
       def after_step_result(keyword, step_match, multiline_arg, status, exception, source_indent, background, file_colon_line)
         return if @in_background || status == :skipped
         @state = :red if status == :failed
-        if exception and [:failed, :undefined].include? status
-          @io.print "\e[K" if colors_enabled?
-          @issues_count += 1
-          @io.puts
-          @io.puts "#{@issues_count})"
-          print_exception(exception, status, 2)
-          @io.puts
-          @io.flush
-        end
         progress(status)
       end
 
@@ -70,6 +61,16 @@ module Cucumber
         if @is_example && table_row.is_a?(Cucumber::Ast::OutlineTable::ExampleRow) && table_row.scenario_outline
           progress(:passed, table_row.scenario_outline.instance_variable_get("@steps").count)
         end
+      end
+
+      def exception(exception, status)
+        @io.print "\e[K" if colors_enabled?
+        @issues_count += 1
+        @io.puts
+        @io.puts "#{@issues_count})"
+        print_exception(exception, status, 2)
+        @io.puts
+        @io.flush
       end
 
       protected
