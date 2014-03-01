@@ -1,4 +1,5 @@
 ## HEAD ##
+  * Display exceptions that do not cause a specific step to fail (by [@mthorn](https://github.com/mthorn))
   * Change ruby-progressbar dependency constraint to `~> 1.2` (by [@lime](https://github.com/lime))
 
 ## 0.0.21 ## (November 2, 2013)
