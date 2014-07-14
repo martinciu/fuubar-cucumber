@@ -1,8 +1,8 @@
-## HEAD ##
+## 0.0.22 (July 14, 2014) ##
   * Display exceptions that do not cause a specific step to fail (by [@mthorn](https://github.com/mthorn))
   * Change ruby-progressbar dependency constraint to `~> 1.2` (by [@lime](https://github.com/lime))
 
-## 0.0.21 ## (November 2, 2013)
+## 0.0.21 (November 2, 2013) ##
   * Fix `uninitialized constant Cucumber::RbSupport::RbLanguage::LanguageSupport` error when `cucumber`
   gem is not in Gemfile (by [@nashby](https://github.com/nashby))
   * Update ruby-progressbar depedency to `~> 1.2.0` (by [@jaredmoody](https://github.com/jaredmoody))
