@@ -1,3 +1,6 @@
+## 0.1.0 (June 11, 2019) ##
+  * Add support for Cucumber 3 (by [@darrinholst](https://github.com/darrinholst))
+
 ## 0.0.22 (July 14, 2014) ##
   * Display exceptions that do not cause a specific step to fail (by [@mthorn](https://github.com/mthorn))
   * Change ruby-progressbar dependency constraint to `~> 1.2` (by [@lime](https://github.com/lime))
